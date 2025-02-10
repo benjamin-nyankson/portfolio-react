@@ -39,9 +39,9 @@ const Contact = () => {
 
     // Use EmailJS to send the form data via email
     emailjs
-      .sendForm('service_uj03c1y', 'template_aprrbcn', e.target as HTMLFormElement, 'U9ZBo6YQd8rJbVUON')
+      .sendForm(import.meta.env.VITE_APP_SERVICE_ID, import.meta.env.VITE_APP_TEMPLATE_ID, e.target as HTMLFormElement, import.meta.env.VITE_APP_USER_ID)
       .then(
-        (result) => {
+        () => {
           setAlert({
             message: 'Your message has been sent successfully!',
             type: 'success',
