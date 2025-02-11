@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import SocialMedia from "./Social";
+import { Link as ScrollLink } from "react-scroll";
 
 const Hero = () => {
   return (
@@ -56,15 +57,18 @@ const Hero = () => {
           accessible and engaging web applications.
         </motion.p>
 
-        {/* CTA Button */}
-        <motion.a
-          href="#projects"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          className="mt-6 bg-[#FD6F00] text-white px-8 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-[#ff8c00] transition-all"
-        >
-          View My Work
-        </motion.a>
+        {/* CTA Button using ScrollLink */}
+        <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }} className="mt-10">
+          <ScrollLink
+            to="projects" // The ID of the section you want to scroll to
+            smooth={true} // Enables smooth scrolling
+            duration={500} // Scroll duration in ms
+            offset={-50} // Adjust the scroll position (optional)
+            className="mt-6 bg-[#FD6F00] text-white px-8 py-3 rounded-lg font-semibold text-lg shadow-lg hover:bg-[#ff8c00] transition-all cursor-pointer"
+          >
+            View My Work
+          </ScrollLink>
+        </motion.div>
       </div>
 
       {/* Right Content */}
@@ -77,7 +81,7 @@ const Hero = () => {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1 }}
         />
-        <SocialMedia/>
+        <SocialMedia />
       </div>
     </section>
   );
