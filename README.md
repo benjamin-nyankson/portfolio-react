@@ -8,7 +8,7 @@ Welcome to my personal developer portfolio built with **React** and **Tailwind C
 
 ## 📸 Preview
 
-![Portfolio Preview](public/preview.jpg) <!-- Replace with your actual preview path if different -->
+![[Portfolio Preview](https://portfolio-react-nine-lime.vercel.app/)](https://portfolio-website-rho-lovat.vercel.app/assets/profile_img-lj-22JYr.jpg) <!-- Replace with your actual preview path if different -->
 
 ---
 
@@ -20,7 +20,6 @@ Welcome to my personal developer portfolio built with **React** and **Tailwind C
 - 📞 Contact Form  
 - ⚡ Fully Responsive Design  
 - 🔗 Social Media Links  
-- 🌙 (Optional) Dark Mode Support  
 
 ---
 
