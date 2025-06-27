@@ -68,16 +68,12 @@ cd portfolio-react
 
 ```bash
 npm install
-# or
-yarn
 ```
 
 ### 3. Start the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
 ```
 
 ### 4. Build for production
@@ -112,17 +108,12 @@ Contributions are welcome for improvements like accessibility, performance, or c
 
 ## 📬 Contact
 
-- **Email:** [nyanksonbenjamin@gmail.com](mailto:nyanksonbenjamin@gmail.com)  
-- **LinkedIn:** [linkedin.com/in/benjaminnyankson](https://www.linkedin.com/in/benjaminnyankson)  
+- **Email:** [nyanksonbenjamin@gmail.com](mailto:nyanksonbenjamin4@gmail.com)  
+- **LinkedIn:** [linkedin.com/in/benjaminnyankson]([https://www.linkedin.com/in/benjaminnyankson](https://www.linkedin.com/in/benjamin-nyankson-47806799/))  
 - **GitHub:** [@benjamin-nyankson](https://github.com/benjamin-nyankson)
 
 ---
 
-## 📄 License
-
-This project is open source under the [MIT License](LICENSE).
-
----
 
 ## ⭐️ Show Your Support
 
