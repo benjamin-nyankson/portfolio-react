@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import pdfFile from "../assets/Benjamin Nyankson _CV.pdf";
+import pdfFile from "../assets/Benjamin Nyankson_CV.pdf";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link as ScrollLink } from "react-scroll";
 
