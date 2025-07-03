@@ -1,7 +1,7 @@
 
 import { FaFacebook,FaLinkedin  } from "react-icons/fa";
 import { FaSquareGithub } from "react-icons/fa6";
-
+ 
 const SocialMedia = () => {
     return (
       <div className="flex gap-4 mt-4 items-center">
