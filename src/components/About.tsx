@@ -28,7 +28,7 @@ import { motion } from "framer-motion";
   ],
 };
 
-export const approaches = [
+ const approaches = [
   { title: "User Experience:", content: "Prioritizing intuitive and engaging user interfaces." },
   { title: "Performance Optimization:", content: "Ensuring fast load times and smooth interactions." },
   { title: "Responsive Design:", content: "Creating adaptable layouts for various devices and screen sizes." },
