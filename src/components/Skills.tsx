@@ -79,6 +79,12 @@ const Skills = () => {
           level: "Beginner",
           img: <FaAngular size={32} />,
         },
+         {
+          name: "React Native",
+          value: 50,
+          level: "Advanced",
+          img: <FaReact size={32} />,
+        },
         {
           name: "Node.js",
           value: 70,
