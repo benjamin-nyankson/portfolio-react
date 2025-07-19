@@ -7,14 +7,16 @@ import Footer from "./components/Footer";
 import About from "./components/About";
 const App = () => {
   return (
-    <div className="bg-gray-900 text-white container mx-auto px-4">
-      <Navbar />
-      <Hero />
-      <About/>
-      <Skills />
-      <Projects />
-      <Contact />
-      <Footer />
+    <div className="bg-gray-900 text-white  px-4">
+      <div className="container mx-auto">
+        <Navbar />
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Contact />
+        <Footer />
+      </div>
     </div>
   );
 };

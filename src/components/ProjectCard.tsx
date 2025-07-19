@@ -6,9 +6,10 @@ interface ProjectCardProps {
   type: string;
   img_url: string;
   link: string;
+  description:string
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ name, type, img_url, link }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ name, type, img_url, link,description }) => {
   const cardRef = useRef(null);
   const isInView = useInView(cardRef, { once: true, margin: "0px 0px -100px 0px" });
 
@@ -35,7 +36,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ name, type, img_url, link }) 
       <div className="mt-4">
         <h3 className="text-xl font-bold text-white mb-2">{name}</h3>
         <p className="text-gray-400 text-sm">
-          A fully responsive {type} project built with modern web technologies.
+         {description}
         </p>
       </div>
 

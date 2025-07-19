@@ -1,28 +1,27 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import pdfFile from "../assets/Benjamin Nyankson_CV.pdf";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link as ScrollLink } from "react-scroll";
+import pdfFile from "../assets/Benjamin Nyankson_CV.pdf";
+
+const NAV_ITEMS = ["Home", "About", "Skills", "Projects", "Contact"];
 
 const Navbar = () => {
-  const navItems = ["Home", "About", "Skills", "Projects", "Contact"];
   const [navOpen, setNavOpen] = useState(false);
-  const [activeNav, setActiveNav] = useState<string | null>(
+  const [activeNav, setActiveNav] = useState<string>(
     localStorage.getItem("activeNav") || "Home"
   );
 
   useEffect(() => {
-    if (activeNav) {
-      localStorage.setItem("activeNav", activeNav);
-    }
+    localStorage.setItem("activeNav", activeNav);
   }, [activeNav]);
 
-  const handleNavClick = (item: string) => {
+  const handleNavClick = useCallback((item: string) => {
     setActiveNav(item);
-    setNavOpen(false); // Close mobile menu on selection
-  };
+    setNavOpen(false);
+  }, []);
 
-  function downloadPdf() {
+  const downloadPdf = () => {
     const link = document.createElement("a");
     link.href = pdfFile;
     link.target = "_blank";
@@ -30,54 +29,50 @@ const Navbar = () => {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
-  }
+  };
+
+  const renderNavLinks = (isMobile = false) =>
+    NAV_ITEMS.map((item) => (
+      <ScrollLink
+        key={item}
+        to={item.toLowerCase()}
+        smooth
+        duration={800}
+        offset={-80}
+        onClick={() => handleNavClick(item)}
+        className={`cursor-pointer px-3 py-2 rounded-lg transition-all ${
+          activeNav === item
+            ? "bg-blue-600 text-white"
+            : "hover:text-blue-400"
+        } ${isMobile ? "block" : "border border-transparent hover:border-white"}`}
+      >
+        {item}
+      </ScrollLink>
+    ));
 
   return (
-    <nav className="fixed w-full bg-gray-900 text-white p-4 z-50 shadow-md">
+    <nav className="fixed top-0 left-0 w-full bg-gray-900 text-white p-4 z-50 shadow-md">
       <div className="container mx-auto flex justify-between items-center">
         <h1 className="text-2xl font-bold cursor-pointer">
-          <ScrollLink
-            to="home"
-            smooth={true}
-            duration={800}
-            offset={-80}
-          >
+          <ScrollLink to="home" smooth duration={800} offset={-80}>
             My Portfolio
           </ScrollLink>
         </h1>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex space-x-6">
-          {navItems.map((item) => (
-            <ScrollLink
-              key={item}
-              to={item.toLowerCase()}
-              smooth={true}
-              duration={800}
-              offset={-80} // Adjust offset for fixed navbar
-              className={`cursor-pointer border border-transparent px-3 py-2 rounded-lg transition-all ${
-                activeNav === item
-                  ? "bg-blue-600 hover:border-white hover:bg-transparent"
-                  : "hover:border-white"
-              }`}
-              onClick={() => handleNavClick(item)}
-            >
-              {item}
-            </ScrollLink>
-          ))}
-
+        <div className="hidden md:flex items-center space-x-4">
+          {renderNavLinks()}
           <button
             onClick={downloadPdf}
-            className="border-white border hover:bg-blue-600 px-3 py-2 rounded-lg transition"
+            className="border border-white hover:bg-blue-600 px-3 py-2 rounded-lg transition"
           >
             Download CV
           </button>
-
-          <ScrollLink to="about" smooth={true} duration={800} offset={-80}>
+          <ScrollLink to="about" smooth duration={800} offset={-80}>
             <motion.img
               src="https://portfolio-website-rho-lovat.vercel.app/assets/profile_img-lj-22JYr.jpg"
               alt="Profile"
-              className="rounded-full size-10 cursor-pointer"
+              className="rounded-full w-10 h-10 object-cover cursor-pointer"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1 }}
@@ -86,12 +81,15 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu Button */}
-        <button onClick={() => setNavOpen(!navOpen)} className="md:hidden">
+        <button
+          onClick={() => setNavOpen((prev) => !prev)}
+          className="md:hidden focus:outline-none"
+        >
           {navOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
         </button>
       </div>
 
-      {/* Mobile Navigation with Animation */}
+      {/* Mobile Navigation */}
       <AnimatePresence>
         {navOpen && (
           <motion.div
@@ -99,23 +97,27 @@ const Navbar = () => {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -20, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-gray-800 mt-4 p-4 space-y-4"
+            className="md:hidden bg-gray-800 mt-3 rounded-lg px-4 py-3 space-y-3"
           >
-            {navItems.map((item) => (
-              <ScrollLink
-                key={item}
-                to={item.toLowerCase()}
-                smooth={true}
-                duration={800}
-                offset={-80}
-                className={`block px-3 py-2 rounded-lg cursor-pointer hover:text-blue-400 transition ${
-                  activeNav === item ? "bg-blue-600" : ""
-                }`}
-                onClick={() => handleNavClick(item)}
-              >
-                {item}
-              </ScrollLink>
-            ))}
+            {renderNavLinks(true)}
+
+            <button
+              onClick={downloadPdf}
+              className="block w-full border border-white hover:bg-blue-600 px-3 py-2 rounded-lg text-left transition"
+            >
+              Download CV
+            </button>
+
+            <ScrollLink to="about" smooth duration={800} offset={-80}>
+              <motion.img
+                src="https://portfolio-website-rho-lovat.vercel.app/assets/profile_img-lj-22JYr.jpg"
+                alt="Profile"
+                className="rounded-full w-10 h-10 object-cover"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1 }}
+              />
+            </ScrollLink>
           </motion.div>
         )}
       </AnimatePresence>

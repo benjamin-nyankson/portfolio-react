@@ -6,7 +6,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="flex flex-col lg:flex-row items-center justify-center text-white container px-4 mx-auto py-16"
+      className="flex flex-col lg:flex-row items-center justify-center text-white container mx-auto py-16"
     >
       {/* Left Content */}
       <div className="flex flex-col items-center lg:items-start text-center lg:text-left py-10 w-full">
